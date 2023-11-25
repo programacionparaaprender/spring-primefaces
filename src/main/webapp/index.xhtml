@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://java.sun.com/jsf/facelets"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Ejemplos empleando primefaces</h1>
+	<div class="card">
+		<h:form id="form">
+			<!-- process="@this" update=":form:datos" onclick="PF('dlg2').show();" -->
+            <p:commandButton value="CREAR" type="button"  actionListener="#{BooksBean.reinstanciar}"  />
+
+            <p:dataTable var="book" value="#{booksBean.books}">
+	            <p:column headerText="Id">
+	                <h:outputText value="#{book.id}" />
+	            </p:column>
+				<p:column headerText="Name">
+	                <h:outputText value="#{book.name}" />
+	            </p:column>
+        	</p:dataTable>
+            <p:dialog header="Procesando" widgetVar="dlg2" minHeight="150" width="400" showEffect="fade" modal="true">
+                <h:panelGrid id="datos" columns="1">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="NOMBRE" />
+                        <p:inputText value="#{BooksBean.book.name}" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="2">
+                        <p:commandButton type="button" icon="pi pi-external-link" value="GRABAR"  update=":form" action="#{BooksBean.procesar()}" oncomplete="PF('dlg2').hide();" />
+                        <p:commandButton value="CANCELAR" type="button" icon="pi pi-external-link" onclick="PF('dlg2').hide();" />
+                    </p:panelGrid>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+	</div>
+	
+	
+	<div class="card">
+	    <p:link outcome="mapsDetail" value="Bookmark">
+	        <f:param name="productId" value="10"/>
+	    </p:link>
+	    
+	</div>
+	<h:form>
+	<p:editor value="#{editor.value}" />
+	<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+	<p:panel header="Select a Location" style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+        	<p:selectOneMenu id="book" value="#{dropdownView.book}" style="width:150px">
+                <f:selectItem itemLabel="Select Book" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{dropdownView.books}" />
+            </p:selectOneMenu>
+            <p:separator />
+            <p:outputLabel for="country" value="Country: " />
+            <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
+                <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{dropdownView.countries}" />
+            </p:selectOneMenu>
+ 
+            <p:outputLabel for="city" value="City: " />
+            <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
+                <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{dropdownView.cities}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+ 
+        <p:separator />
+ 		<p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
+       
+    </p:panel>
+	</h:form>
+	
+	<h:form>
+	    <div class="card">
+	        <p:dataTable var="book" value="#{booksBean.books}">
+	            <p:column headerText="Id">
+	                <h:outputText value="#{book.id}" />
+	            </p:column>
+				<p:column headerText="Name">
+	                <h:outputText value="#{book.name}" />
+	            </p:column>
+	        </p:dataTable>
+	    </div>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+
+	<h1>Ejemplo de mapas en primefaces</h1>
+	<h:form prependId="false">
+        <p:growl id="messages" showDetail="true" life="2000"/>
+        <p:gmap id="gmap" center="36.890257,30.707417" zoom="15" type="ROADMAP" style="width:100%;height:400px"
+        	model="#{mapsDetailView.simpleModel}">
+            <p:ajax event="stateChange" listener="#{mapsDetailView.onStateChange}" update="messages"/>
+            <p:ajax event="pointSelect" listener="#{mapsDetailView.onPointSelect}" update="messages"/>
+        </p:gmap>
+    </h:form>
+
+	<div class="card">
+	    <p class="p-m-0">You've been redirected to this bookmarkable page with button.
+	        ViewParameter you've passed is <strong>"#{productDetailView.productId}"</strong>
+	    </p>
+	</div>
+	
+
+</h:body>
+</html>
