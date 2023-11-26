@@ -1,0 +1,22 @@
+<Context>
+
+  <Resource name="jdbc/student_tracker" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="20" maxIdle="5" maxWait="10000"
+               username="demo" password="demo" 
+               driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/student_tracker?useSSL=false&amp;serverTimezone=UTC"/>
+   <Resource name="jdbc/student_tracker_sqlserver" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="20" maxIdle="5" maxWait="10000"
+               username="sa" password="123" 
+               driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+               url="jdbc:sqlserver://localhost;databaseName=QuirkyBookProject"/>
+     <Resource name="jdbc/student_oracle" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="20" maxIdle="5" maxWait="10000"
+               username="SYSTEM" password="123" 
+               driverClassName="oracle.jdbc.driver.OracleDriver"
+               url="jdbc:oracle:thin:@localhost:1521:xe"/>
+
+</Context>

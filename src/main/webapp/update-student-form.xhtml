@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://java.sun.com/jsf/facelets"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Update Student</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	<h:outputStylesheet library="css" name="add-student-style.css"  />
+	
+</h:head>
+
+<h:body>
+
+	<div id="wrapper">
+		<div id="header">
+			<h2>FooBar University</h2>
+		</div>
+	</div>
+	
+	<div id="container">
+		<h3>Update Student</h3>
+
+		<h:messages globalOnly="true" />
+
+		<h:form id="form" style="margin-top: 10px;" >
+			<h:panelGrid columns="3">
+			
+				<h:outputLabel>First name:</h:outputLabel> <h:inputText value="#{student.firstName}" id="firstName" /> <h:message for="firstName" />
+	
+				<h:outputLabel>Last name:</h:outputLabel> <h:inputText value="#{student.lastName}" id="lastName" /> <h:message for="lastName" />
+	
+				<h:outputLabel>Email:</h:outputLabel> <h:inputText value="#{student.email}" id="email" 
+									required="true"
+            							requiredMessage="Your email is mandatory."/> 	<h:message for="email"  />
+				
+				 <h:inputHidden value="#{student.id}" />
+				
+				 <h:commandButton value="Save" styleClass="save" action="#{studentController.updateStudent(student)}"/>
+			
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+		<p><h:outputLink value="list-students.xhtml">Back to List</h:outputLink></p>
+
+	</div>	
+</h:body>
+</html>

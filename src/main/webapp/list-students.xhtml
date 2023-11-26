@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://java.sun.com/jsf/facelets"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<!-- <f:metadata> -->
+<!-- 	<f:event type="preRenderView" -->
+<!-- 		listener="#{studentController.loadStudents()}" /> -->
+<!-- </f:metadata> -->
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Student Tracker App</title>
+
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+
+	<div id="wrapper">
+		<div id="header">
+			<h2>FooBar University</h2>
+		</div>
+	</div>
+
+	<div id="container">
+
+		<div id="content">
+
+			<h:messages globalOnly="true" />
+
+			<h:button value="Add Student" styleClass="add-student-button"
+				outcome="add-student-form" />
+
+			<h:form>
+
+				<h:dataTable value="#{studentController.students}" var="tempStudent"
+					styleClass="demo-table" headerClass="demo-table-header"
+					rowClasses="demo-table-odd-row,demo-table-even-row">
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">First Name</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStudent.firstName}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Last Name</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStudent.lastName}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Email</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStudent.email}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Action</f:facet>
+
+						<!--  the value for each row -->
+						<h:commandLink value="Update"
+							action="#{studentController.loadStudent(tempStudent.id)}" />
+					|
+
+					<h:commandLink value="Delete"
+							onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
+							action="#{studentController.deleteStudent(tempStudent.id)}" />
+
+					</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+
+		</div>
+
+	</div>
+
+</h:body>
+</html>

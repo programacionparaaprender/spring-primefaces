@@ -8,6 +8,7 @@
 ### repositorios
 >- https://github.com/programacionparaaprender/jdbc-student-tracker-final
 >- https://github.com/programacionparaaprender/javaserverfaces
+>- https://github.com/programacionparaaprender/spring-primefaces
 
 ### driver oracle para conectarse a base de datos
 >- https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html
