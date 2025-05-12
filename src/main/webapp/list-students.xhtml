@@ -6,14 +6,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://java.sun.com/jsf/facelets"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:composite="http://java.sun.com/jsf/composite">
-
-<!-- <f:metadata> -->
-<!-- 	<f:event type="preRenderView" -->
-<!-- 		listener="#{studentController.loadStudents()}" /> -->
-<!-- </f:metadata> -->
-
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
 <h:head>
+	<!-- <f:metadata>
+		<f:event type="preRenderView"
+			listener="#{studentController.loadStudents()}" />
+	</f:metadata> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -39,7 +39,6 @@
 
 			<h:button value="Add Student" styleClass="add-student-button"
 				outcome="add-student-form" />
-
 			<h:form>
 
 				<h:dataTable value="#{studentController.students}" var="tempStudent"

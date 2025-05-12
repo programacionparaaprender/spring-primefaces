@@ -2,6 +2,9 @@
 >- https://www.udemy.com/course/java-simplecrud/learn/lecture/18578554#overview
 >- https://www.udemy.com/course/jsf-tutorial/learn/lecture/2617738#overview
 
+### ejemplo de proyecto
+>- https://www.logicbig.com/tutorials/spring-framework/spring-boot/boot-primefaces-integration.html
+
 ### primefaces responsivo
 >- https://www.primefaces.org/showcase-v8/ui/misc/responsive.xhtml
 

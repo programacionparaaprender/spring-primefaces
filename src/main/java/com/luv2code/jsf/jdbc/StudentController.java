@@ -14,33 +14,38 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.springframework.stereotype.Component;
+
 @ManagedBean(name="studentController")
 @SessionScoped
 @ViewScoped
-public class StudentController implements Serializable {
+@Component
+public class StudentController {
     
-   /**
-	 * 
-	 */
-	private static final long serialVersionUID = -8470241778864558956L;
 	private List<Student> students;
 	private StudentDbUtil studentDbUtil;
 	private Logger logger = Logger.getLogger(getClass().getName());
-	
-	
-    public StudentController() throws Exception {
-		students = new ArrayList<>();
-		studentDbUtil = StudentDbUtil.getInstance();
-		loadStudents();
-	}
+	private String textoPrueba;
+	/*
+	 * public StudentController() throws Exception { students = new ArrayList<>();
+	 * studentDbUtil = StudentDbUtil.getInstance(); loadStudents(); }
+	 */
 	
 	@PostConstruct
     public void init() throws Exception {
 		students = new ArrayList<>();
-		studentDbUtil = StudentDbUtil.getInstance();
-		loadStudents();
+		//studentDbUtil = StudentDbUtil.getInstance();
+		//loadStudents();
 	}
 	
+	public String getTextoPrueba() {
+		return textoPrueba;
+	}
+
+	public void setTextoPrueba(String textoPrueba) {
+		this.textoPrueba = textoPrueba;
+	}
+
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -50,7 +55,7 @@ public class StudentController implements Serializable {
 		students.clear();
 		try {
 			// get all students from database
-			students = studentDbUtil.getStudents();
+			// students = studentDbUtil.getStudents();
 		} catch (Exception exc) {
 			// send this to server logs
 			logger.log(Level.SEVERE, "Error loading students", exc);
